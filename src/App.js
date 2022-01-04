@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import ProductListing from "./containers/ProductListing";
 import Header from "./containers/Header";
 import "./App.css";
-import ProductDetails from "./containers/ProductDetails";
+import ProductDetails from "./containers/ProductDetail";
 
 function App() {
   return (
@@ -11,10 +11,8 @@ function App() {
       <Router>
         <Header />
         <Switch>
-          <Route exact path="/redux-store">
-              <Redirect to="/" />
-          </Route> 
-          <Route exact path="/"component={ProductListing} />
+          <Route path={process.env.PUBLIC_URL + '/'} component={ProductListing} />
+          {/* <Route exact path="/" component={ProductListing} /> */}
           <Route path="/product/:productId" component={ProductDetails} />
           <Route> 404 Not Found! </Route>
         </Switch>
